@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -49,4 +49,12 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
+  .main-index {
+    padding-bottom: 50px;
+  }
+  @import '../assets/normalize.css';
+  @import '../assets/fonts.css';
+  @import '../assets/settings.css';
+
 </style>
