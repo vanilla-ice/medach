@@ -131,6 +131,10 @@
           tbody
 </template>
 
+<script>
+
+</script>
+
 <style scoped lang="scss">
   .calendar__title {
   margin-top: 95px;
