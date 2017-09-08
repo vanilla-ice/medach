@@ -13,8 +13,6 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
-    "jsdom": "^11.2.0",
     "nuxt": "^1.0.0-rc8",
     "vue-style-loader": "^3.0.1"
   },
