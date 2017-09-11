@@ -7,8 +7,8 @@
       posters-component
 </template>
 <script>
-  import HeaderComponent from '~/components/header-component.vue'
-  import PostersComponent from '~/components/posters-component.vue'
+  import HeaderComponent from '~/components/Header.vue'
+  import PostersComponent from '~/components/Posters.vue'
 
 export default {
     components: {

@@ -6,8 +6,8 @@
 
 </template>
 <script>
-  import HeaderComponent from '~/components/header-component.vue'
-  import CalendarComponent from '~/components/calendar-component.vue'
+  import HeaderComponent from '~/components/Header.vue'
+  import CalendarComponent from '~/components/Calendar.vue'
 
 export default {
     components: {

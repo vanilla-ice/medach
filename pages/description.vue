@@ -11,10 +11,10 @@
 </template>
 
 <script>
-  import HeaderComponent from '~/components/header-component.vue'
-  import DescColumn from '~/components/desc-column.vue'
-  import InfoColumn from '~/components/info-column.vue'
-  import descColumnBottom from '~/components/desc-column-bottom.vue'
+  import HeaderComponent from '~/components/Header.vue'
+  import DescColumn from '~/components/DescColumn.vue'
+  import InfoColumn from '~/components/InfoColumn.vue'
+  import descColumnBottom from '~/components/DescColumnBottom.vue'
 
   export default {
     components: {

@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import HeaderComponent from '~/components/header-component.vue'
-import DataComponent from '~/components/data-component.vue'
-import BigFotosComponent from '~/components/big-fotos-component.vue'
-import MinFotosComponent from '~/components/min-fotos-component.vue'
+import HeaderComponent from '~/components/Header.vue'
+import DataComponent from '~/components/Data.vue'
+import BigFotosComponent from '~/components/BigFotos.vue'
+import MinFotosComponent from '~/components/MinFotos.vue'
 
 export default {
   components: {
