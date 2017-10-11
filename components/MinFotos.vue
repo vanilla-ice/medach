@@ -1,4 +1,4 @@
-<template lang="pug">
+<template lang="pug"> 
   .min-fotos
       .min-fotos__day.min-fotos__tuesday
         .min-fotos__day-data
@@ -28,62 +28,62 @@
             a(href="#").min-fotos__item-foto.min-fotos__item-foto-5
             .min-fotos__item-text
               | В 2015 году, последнем году, за которым имеются данные, лишь 72% детей до трех лет в США получили семь ключевых…
-      .min-fotos__day.min-fotos__monday.min-fotos__grey
-        .min-fotos__day-data
-          .min-fotos__day-data-text
-            | Понедельник
-          a(name="28/02/2017").min-fotos__day-data-digit
-            | 28.02.2017
-          span.min-fotos__day-data-circle
-        .min-fotos__day-wrapper
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-6
-            .min-fotos__item-text
-              | Микробиом, а в частности — микробиом кишечника — стал в последнее время актуальной темой…
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-7
-            .min-fotos__item-text
-              | В вузе, на фармакологии, многие из вас заучивали названия лекарств, показания к их применению и их основные...
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-8
-            .min-fotos__item-text
-              | Преждевременные роды на ранних сроках представляют собой главную причину неонатальной смертности и…
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-9
-            .min-fotos__item-text
-              | Когда Блейк Виденхефт только начал работать с микроорганизмами, предмет его исследований ещё был…
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-10
-            .min-fotos__item-text
-              | Вакцины спасают жизни. Но каков наиболее эффективный способ убедить в этом встревоженных родителей?
-      .min-fotos__day.min-fotos__sunday
-        .min-fotos__day-data
-          .min-fotos__day-data-text
-            | Воскресенье
-          a(name="1/03/2017").min-fotos__day-data-digit
-            | 01.03.2017
-          span.min-fotos__day-data-circle
-        .min-fotos__day-wrapper
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-11
-            .min-fotos__item-text
-              | Осознавая некомпетентность людей, вызванную пропагандой антипрививочников как среди простого населения, так и со стороны медицинских…
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-12
-            .min-fotos__item-text
-              | Стоимость проведения клинических испытаний и выведения нового препарата на рынок является центральной проблемой…
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-13
-            .min-fotos__item-text
-              | По каким причинам женщины выбирают карьеру в академической медицине или же отказываются от нее?
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-14
-            .min-fotos__item-text
-              | В прошлом году Кристина Квасней была близка к тому, чтобы отказаться от цели.
-          .min-fotos__item
-            a(href="#").min-fotos__item-foto.min-fotos__item-foto-15
-            .min-fotos__item-text
-              | Инфографика, сравнивающая распределение бюджетных мест до и после приказа
+      //- .min-fotos__day.min-fotos__monday.min-fotos__grey
+      //-   .min-fotos__day-data
+      //-     .min-fotos__day-data-text
+      //-       | Понедельник
+      //-     a(name="28/02/2017").min-fotos__day-data-digit
+      //-       | 28.02.2017
+      //-     span.min-fotos__day-data-circle
+      //-   .min-fotos__day-wrapper
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-6
+      //-       .min-fotos__item-text
+      //-         | Микробиом, а в частности — микробиом кишечника — стал в последнее время актуальной темой…
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-7
+      //-       .min-fotos__item-text
+      //-         | В вузе, на фармакологии, многие из вас заучивали названия лекарств, показания к их применению и их основные...
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-8
+      //-       .min-fotos__item-text
+      //-         | Преждевременные роды на ранних сроках представляют собой главную причину неонатальной смертности и…
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-9
+      //-       .min-fotos__item-text
+      //-         | Когда Блейк Виденхефт только начал работать с микроорганизмами, предмет его исследований ещё был…
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-10
+      //-       .min-fotos__item-text
+      //-         | Вакцины спасают жизни. Но каков наиболее эффективный способ убедить в этом встревоженных родителей?
+      //- .min-fotos__day.min-fotos__sunday
+      //-   .min-fotos__day-data
+      //-     .min-fotos__day-data-text
+      //-       | Воскресенье
+      //-     a(name="1/03/2017").min-fotos__day-data-digit
+      //-       | 01.03.2017
+      //-     span.min-fotos__day-data-circle
+      //-   .min-fotos__day-wrapper
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-11
+      //-       .min-fotos__item-text
+      //-         | Осознавая некомпетентность людей, вызванную пропагандой антипрививочников как среди простого населения, так и со стороны медицинских…
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-12
+      //-       .min-fotos__item-text
+      //-         | Стоимость проведения клинических испытаний и выведения нового препарата на рынок является центральной проблемой…
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-13
+      //-       .min-fotos__item-text
+      //-         | По каким причинам женщины выбирают карьеру в академической медицине или же отказываются от нее?
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-14
+      //-       .min-fotos__item-text
+      //-         | В прошлом году Кристина Квасней была близка к тому, чтобы отказаться от цели.
+      //-     .min-fotos__item
+      //-       a(href="#").min-fotos__item-foto.min-fotos__item-foto-15
+      //-       .min-fotos__item-text
+      //-         | Инфографика, сравнивающая распределение бюджетных мест до и после приказа
 
 </template>
 

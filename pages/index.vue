@@ -4,10 +4,13 @@
     data-component
     main.main-index
       big-fotos-component
-      MinFotosComponent
+      MinFotosComponent(v-for="(day, index) in postsByDay", :key="index")
+
 </template>
 
 <script>
+import moment from 'moment'
+
 import HeaderComponent from '~/components/Header.vue'
 import DataComponent from '~/components/Data.vue'
 import BigFotosComponent from '~/components/BigFotos.vue'
@@ -19,15 +22,42 @@ const $posts = db.ref('posts')
 
 export default {
   fetch ({ store }) {
-    return store.dispatch('setPostsRef', $posts)
+    store.dispatch('setPostsRef', $posts.orderByChild('sortDate').limitToLast(50))
+  },
+
+  data () {
+    return {
+    }
   },
 
   mounted () {
-    $posts.once('value').then(post => console.log('post', post))
+    console.log(this.postsByDay)
   },
 
   computed: {
-    ...mapGetters(['posts'])
+    ...mapGetters(['posts']),
+
+    postsByDay () {
+      return this.posts.reduce((res, curr) => {
+        const date = moment(curr.date).format('DD/MM/YYYY')
+
+        if (!res.hasOwnProperty(date)) {
+          res[date] = []
+        }
+        res[date].push(curr)
+        return res
+      }, {})
+    }
+  },
+
+  methods: {
+    // setPostsByDay: (day) => {
+    //   const dayDate = new Date(day)
+
+    //   return this.posts.filter(post => {
+    //     const date = new Date(post.date)
+    //   })
+    // }
   },
 
   components: {
