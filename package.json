@@ -13,6 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "date-fns": "^1.29.0",
     "firebase": "^4.4.0",
     "jquery": "^3.2.1",
     "moment": "2.18.1",
