@@ -4,7 +4,7 @@
         .min-fotos__day-data
           .min-fotos__day-data-text
             | {{dayOfTheWeek}}
-          a(name="1/03/2017").min-fotos__day-data-digit
+          .min-fotos__day-data-digit(@click="setActiveDate(day)")
             | {{day}}
           span.min-fotos__day-data-circle
         .min-fotos__day-wrapper
@@ -16,6 +16,7 @@
 
 <script>
 import moment from 'moment'
+import { mapMutations } from 'vuex'
 
 export default {
   props: ['posts', 'day'],
@@ -35,6 +36,7 @@ export default {
   },
 
   methods: {
+    ...mapMutations(['setActiveDate'])
   }
 }
 </script>
@@ -61,6 +63,7 @@ export default {
 
 .min-fotos__day-data-digit {
   margin-left: auto;
+  cursor: pointer;
 }
 
 .min-fotos__day-data-circle {

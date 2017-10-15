@@ -1,9 +1,36 @@
 <template lang="pug">
   .data
     .data-text
-      | ПОНЕДЕЛЬНИК 28/02/2017
+      | {{dayOfTheWeek}} {{date}}
       span.data__circle
 </template>
+
+<script>
+import moment from 'moment'
+import { mapMutations } from 'vuex'
+
+export default {
+  props: ['date'],
+
+  data () {
+    return {
+    }
+  },
+
+  mounted () {
+  },
+
+  computed: {
+    dayOfTheWeek () {
+      return moment(this.date, 'DD/MM/YYYY').lang('ru').format('dddd')
+    }
+  },
+
+  methods: {
+    ...mapMutations(['setActiveDate'])
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .data {
@@ -22,6 +49,7 @@
 
   font-family: LucidaGrande-Bold;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .data__circle {

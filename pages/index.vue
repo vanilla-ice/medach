@@ -1,9 +1,9 @@
 <template lang="pug" >
   div
     header-component
-    data-component
+    data-component(:date="activeDate")
     main.main-index
-      big-fotos-component
+      big-fotos-component(:posts="getActivePosts")
       .inner
         .days-wrapper(v-for="(day, index) in getPostsByDay", :key="index")
           MinFotosComponent(:posts="day", :day="index")
@@ -32,11 +32,12 @@ export default {
     }
   },
 
-  mounted () {
-  },
-
   computed: {
-    ...mapGetters(['posts']),
+    ...mapGetters(['posts', 'activeDate']),
+
+    getActivePosts () {
+      return this.getPostsByDay[this.activeDate]
+    },
 
     getPostsByDay () {
       const sortedPosts = {}
@@ -64,13 +65,7 @@ export default {
   },
 
   methods: {
-    // setPostsByDay: (day) => {
-    //   const dayDate = new Date(day)
 
-    //   return this.posts.filter(post => {
-    //     const date = new Date(post.date)
-    //   })
-    // }
   },
 
   components: {

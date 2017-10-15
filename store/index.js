@@ -2,21 +2,28 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 import { firebaseMutations, firebaseAction } from 'vuexfire'
+import moment from 'moment'
 
 Vue.use(Vuex)
 
 function store () {
   return new Vuex.Store({
     state: {
-      posts: []
+      posts: [],
+      activeDate: moment(new Date()).format('DD/MM/YYYY')
     },
 
     getters: {
-      posts: state => state.posts
+      posts: state => state.posts,
+      activeDate: state => state.activeDate
     },
 
     mutations: {
-      ...firebaseMutations
+      ...firebaseMutations,
+
+      setActiveDate (store, date) {
+        store.activeDate = date
+      }
     },
 
     plugins: [createLogger()],

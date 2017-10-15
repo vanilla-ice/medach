@@ -1,14 +1,45 @@
 <template lang="pug">
   .big-fotos
-      a(href="#").main__big-foto.main__big-foto-1
-      a(href="#").main__big-foto.main__big-foto-2
-      a(href="#").main__big-foto.main__big-foto-3
-      a(href="#").main__big-foto.main__big-foto-4
+      nuxt-link(v-for="(post, id) in getPosts", :to="'post/' + post.url").main__big-foto.main__big-foto-1
       .main__big-fotos__cloock
         .main__big-fotos__cloock-icon
         .main__big-fotos__cloock-digits
           | 19:10
 </template>
+
+<script>
+import moment from 'moment'
+import { mapMutations } from 'vuex'
+
+export default {
+  props: ['posts'],
+
+  data () {
+    return {
+    }
+  },
+
+  mounted () {
+  },
+
+  updated () {
+  },
+
+  computed: {
+    dayOfTheWeek () {
+      return moment(this.day, 'DD/MM/YYYY').lang('ru').format('dddd')
+    },
+
+    getPosts () {
+      return this.posts
+    }
+  },
+
+  methods: {
+    ...mapMutations(['setActiveDate'])
+  }
+}
+</script>
 
 <style scoped lang="scss">
   .main__big-foto {

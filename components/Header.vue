@@ -1,7 +1,7 @@
 <template lang="pug">
   header.header
     .container
-      a(href="#").logo
+      nuxt-link(to="/").logo
         img(src="../static/images/logo.png")
       .header__main-nav
         a(href="#").main-nav__item
@@ -18,8 +18,6 @@
           | #CRISPR
         a(href="#").main-nav__item
           | #НЕЙРОХИРУРГИЯ
-        a(href="#").main-nav__item
-          | #ХИРУРГИЯ
       .header__wrapper-dop
         .header__serch-wrapper
           label
