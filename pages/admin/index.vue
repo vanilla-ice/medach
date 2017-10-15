@@ -5,7 +5,7 @@
     .tags
       .tag(v-for="(tag, id) in availableTags", :key="id")
         label(:for="'tag-' + id") {{ tag.name }}
-        input(type="checkbox", :value="tag.value", :id="'tag-' + id" v-model="activePost.tags")
+        input(type="checkbox", :value="tag.value", :id="'tag-' + id" v-model="tags")
 
     button(@click="savePost") save
 </template>
@@ -27,13 +27,14 @@ const emptyPost = {
   sortDate: null,
   date: null,
   url: null,
-  tags: []
+  tags: {}
 }
 
 export default {
   data () {
     return {
       activePost: emptyPost,
+      tags: [],
       availableTags: [
         {
           value: 'surgery',
@@ -83,6 +84,8 @@ export default {
       const date = new Date()
       this.activePost.sortDate = date.getTime()
       this.activePost.date = `${date}`
+      this.tags.map(item => { this.activePost.tags[item] = true })
+      this.tags = []
 
       $posts.push().set(this.activePost)
     },
