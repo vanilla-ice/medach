@@ -4,19 +4,19 @@
       nuxt-link(to="/").logo
         img(src="../static/images/logo.png")
       .header__main-nav
-        a(href="#").main-nav__item
+        nuxt-link(to="/tag/surgery").main-nav__item
           | #ХИРУРГИЯ
-        a(href="#").main-nav__item
+        nuxt-link(to="/tag/therapy").main-nav__item
           | #ТЕРАПИЯ
-        a(href="#").main-nav__item
+        nuxt-link(to="/tag/ophthalmology").main-nav__item
           | #ОФТАЛЬМОЛОГИЯ
-        a(href="#").main-nav__item
+        nuxt-link(to="/tag/cardiology").main-nav__item
           | #КАРДИОЛОГИЯ
-        a(href="#").main-nav__item
+        nuxt-link(to="/tag/education").main-nav__item
           | #ОБРАЗОВАНИЕ
-        a(href="#").main-nav__item
+        nuxt-link(to="/tag/crispr").main-nav__item
           | #CRISPR
-        a(href="#").main-nav__item
+        nuxt-link(to="/tag/neurosurgery").main-nav__item
           | #НЕЙРОХИРУРГИЯ
       .header__wrapper-dop
         .header__serch-wrapper

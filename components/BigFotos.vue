@@ -46,30 +46,29 @@ export default {
   display: block;
   width: 20%;
   height: 25vw;
+  background-size: cover !important;
 }
 
 .big-fotos {
   display: flex;
+  background: #f8f8f8;
+  height: 25vw;
 }
 
 .main__big-foto-1 {
   background: url('../static/images/skull.png') no-repeat center;
-  background-size: contain;
 }
 
 .main__big-foto-2 {
   background: url('../static/images/good-bad.png') no-repeat center;
-  background-size: contain;
 }
 
 .main__big-foto-3 {
   background: url('../static/images/dies-irae.png') no-repeat center;
-  background-size: contain;
 }
 
 .main__big-foto-4 {
   background: url('../static/images/diagnosis-logic.png') no-repeat center;
-  background-size: contain;
 }
 
 .main__big-fotos__cloock {
