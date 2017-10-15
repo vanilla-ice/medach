@@ -15,7 +15,7 @@
   "dependencies": {
     "firebase": "^4.4.0",
     "jquery": "^3.2.1",
-    "moment": "^2.19.0",
+    "moment": "2.18.1",
     "nuxt": "^1.0.0-rc8",
     "vue-style-loader": "^3.0.1",
     "vuex": "^2.4.0",

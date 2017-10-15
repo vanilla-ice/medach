@@ -11,18 +11,44 @@
 </template>
 
 <script>
-  import HeaderComponent from '~/components/Header.vue'
-  import DescColumn from '~/components/DescColumn.vue'
-  import InfoColumn from '~/components/InfoColumn.vue'
-  import descColumnBottom from '~/components/DescColumnBottom.vue'
+import HeaderComponent from '~/components/Header.vue'
+import DescColumn from '~/components/DescColumn.vue'
+import InfoColumn from '~/components/InfoColumn.vue'
+import descColumnBottom from '~/components/DescColumnBottom.vue'
 
-  export default {
-    components: {
-      HeaderComponent,
-      DescColumn,
-      InfoColumn,
-      descColumnBottom
+import { mapGetters } from 'vuex'
+import { db } from '~/db'
+const $posts = db.ref('posts')
+
+export default {
+
+  data () {
+    return {
     }
+  },
+
+  computed: {
+    ...mapGetters(['posts']),
+
+    activePost () {
+      return this.posts[0]
+    }
+  },
+
+  created () {
+    this.$store.dispatch('setPostsRef', $posts.orderByChild('url').equalTo(this.$route.params.id))
+  },
+
+  mounted () {
+    console.log(this.activePost)
+  },
+
+  components: {
+    HeaderComponent,
+    DescColumn,
+    InfoColumn,
+    descColumnBottom
+  }
 }
 </script>
 

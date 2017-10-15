@@ -4,7 +4,9 @@
     data-component
     main.main-index
       big-fotos-component
-      MinFotosComponent(v-for="(day, index) in postsByDay", :key="index")
+      .inner
+        .days-wrapper(v-for="(day, index) in getPostsByDay", :key="index")
+          MinFotosComponent(:posts="day", :day="index")
 
 </template>
 
@@ -31,14 +33,14 @@ export default {
   },
 
   mounted () {
-    console.log(this.postsByDay)
   },
 
   computed: {
     ...mapGetters(['posts']),
 
-    postsByDay () {
-      return this.posts.reduce((res, curr) => {
+    getPostsByDay () {
+      const sortedPosts = {}
+      const posts = this.posts.reduce((res, curr, id) => {
         const date = moment(curr.date).format('DD/MM/YYYY')
 
         if (!res.hasOwnProperty(date)) {
@@ -47,6 +49,17 @@ export default {
         res[date].push(curr)
         return res
       }, {})
+
+      Object.keys(posts).sort((a, b) => {
+        const dateA = moment(a, 'DD/MM/YYYY')
+        const dateB = moment(b, 'DD/MM/YYYY')
+
+        if (dateA > dateB) return -1
+        else if (dateA < dateB) return 1
+        else return 0
+      }).map(item => { sortedPosts[item] = {...posts[item]} })
+
+      return sortedPosts
     }
   },
 
@@ -69,6 +82,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scopped>
+
+.days-wrapper {
+  &:nth-child(even) {
+    background: #F8F8F8;
+  }
+}
 
 </style>

@@ -1,6 +1,7 @@
 <template lang="pug" >
   div
-    input(placeholder="Post name" v-model="activePost.name")
+    input(placeholder="Post name" v-model="activePost.name" @change="changeName")
+    input(placeholder="Url" v-model="activePost.url")
     button(@click="savePost") save
 </template>
 
@@ -10,6 +11,8 @@ import DataComponent from '~/components/Data.vue'
 import BigFotosComponent from '~/components/BigFotos.vue'
 import MinFotosComponent from '~/components/MinFotos.vue'
 
+import slugify from '~/utils/slugify'
+
 import { mapGetters } from 'vuex'
 import { db } from '~/db'
 const $posts = db.ref('posts')
@@ -17,7 +20,8 @@ const $posts = db.ref('posts')
 const emptyPost = {
   name: null,
   sortDate: null,
-  date: null
+  date: null,
+  url: null
 }
 
 export default {
@@ -40,13 +44,15 @@ export default {
 
   methods: {
     savePost () {
-      const date = new Date()
+      const date = new Date('08/03/2017')
       this.activePost.sortDate = date.getTime()
       this.activePost.date = `${date}`
 
-      console.log(this.activePost)
-
       $posts.push().set(this.activePost)
+    },
+
+    changeName (e) {
+      this.activePost.url = slugify(e.target.value)
     }
   },
 
