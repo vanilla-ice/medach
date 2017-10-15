@@ -2,110 +2,44 @@
   .posters
       .container
         .posters__wrapper
-          .posters__item
+          .posters__item(v-for="(post, id) in posts", :key="id")
             a(href="#").posters__item-data
-              | 01.03.2017
+              | {{ getPostDate(post.date) }}
               span
                 .posters__item-circle
             a(href="#").posters__item-foto.posters__item-foto-1
             .posters__item-text
               | В 2015 году, последнем году, за которым имеются данные, лишь 72% детей до трех лет в США получили семь ключевых…
-          .posters__item
-            a(href="#").posters__item-data
-              | 23.05.2015
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-2
-            .posters__item-text
-              | Однажды, в октябре 2010 года, Лия Дюрант убирала в неотремонтированном подвале своего дома в Фолс-Черч.
-          .posters__item
-            a(href="#").posters__item-data
-              | 25.11.2016
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-3
-            .posters__item-text
-              | Бытует мнение, что полость рта — это одно из самых грязных мест во всём организме человека.
-          .posters__item
-            a(href="#").posters__item-data
-              | 07.07.2017
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-4
-            .posters__item-text
-              | Когда кто-то говорит “больно”, мне часто вспоминается сцена в начале фильма “Майор Пэйн”.
-          .posters__item
-            a(href="#").posters__item-data
-              | 22.09.2016
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-5
-            .posters__item-text
-              | В ответ на стресс мозг активирует несколько систем, секретирующих нейропептиды.
-      .posters__wrapper.min-fotos__grey
-        .container
-          .posters__item
-            a(href="#").posters__item-data
-              | 01.03.2017
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-6
-            .posters__item-text
-              | Микробиом, а в частности — микробиом кишечника — стал в последнее время актуальной темой…
-          .posters__item
-            a(href="#").posters__item-data
-              | 23.05.2015
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-7
-            .posters__item-text
-              | В вузе, на фармакологии, многие из вас заучивали названия лекарств, показания к их применению и их основные…
-          .posters__item
-            a(href="#").posters__item-data
-              | 25.11.2016
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-8
-            .posters__item-text
-              | Преждевременные роды на ранних сроках представляют собой главную причину неонатальной смертности и...
-          .posters__item
-            a(href="#").posters__item-data
-              | 07.07.2017
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-9
-            .posters__item-text
-              | Когда кто-то говорит “больно”, мне часто вспоминается сцена в начале фильма “Майор Пэйн”.
-          .posters__item
-            a(href="#").posters__item-data
-              | 22.09.2016
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-10
-            .posters__item-text
-              | Вакцины спасают жизни. Но каков наиболее эффективный способ убедить в этом встревоженных родителей?
-      .container
-        .posters__wrapper
-          .posters__item
-            a(href="#").posters__item-data
-              | 01.03.2017
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-11
-            .posters__item-text
-              | В прошлом году Кристина Квасней была близка к тому, чтобы отказаться от цели.
-          .posters__item
-            a(href="#").posters__item-data
-              | 23.05.2015
-              span
-                .posters__item-circle
-            a(href="#").posters__item-foto.posters__item-foto-12
-            .posters__item-text
-              | В течение длительного времени ученые пытались понять некоторые основополагающие принципы цветового зрения.
+          
 </template>
 
+<script>
+import moment from 'moment'
+
+export default {
+  props: ['posts'],
+
+  data () {
+    return {
+    }
+  },
+
+  mounted () {
+  },
+
+  computed: {
+  },
+
+  methods: {
+    getPostDate (date) {
+      return moment(date).format('DD.MM.YYYY')
+    }
+  }
+}
+</script>
+
 <style scoped lang="scss">
-  .posters__item {
+.posters__item {
   display: inline-block;
   vertical-align: top;
 
