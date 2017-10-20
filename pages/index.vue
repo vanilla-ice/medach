@@ -21,6 +21,7 @@ import MinFotosComponent from '~/components/MinFotos.vue'
 import { mapGetters } from 'vuex'
 import { db } from '~/db'
 const $posts = db.ref('posts')
+moment.locale('ru')
 
 export default {
   fetch ({ store }) {
@@ -42,6 +43,7 @@ export default {
     getPostsByDay () {
       const sortedPosts = {}
       const posts = this.posts.reduce((res, curr, id) => {
+        console.log('CURRENT', curr.date)
         const date = moment(curr.date).format('DD/MM/YYYY')
 
         if (!res.hasOwnProperty(date)) {

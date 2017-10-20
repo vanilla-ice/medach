@@ -8,8 +8,9 @@
 </template>
 
 <script>
-import moment from 'moment'
 import { mapMutations } from 'vuex'
+import { format } from 'date-fns'
+import ru from 'date-fns/locale/ru'
 
 export default {
   props: ['posts'],
@@ -27,7 +28,7 @@ export default {
 
   computed: {
     dayOfTheWeek () {
-      return moment(this.day, 'DD/MM/YYYY').lang('ru').format('dddd')
+      return format(this.day, 'dddd', { locale: ru })
     },
 
     getPosts () {

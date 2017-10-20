@@ -22,7 +22,7 @@ export default {
 
   computed: {
     dayOfTheWeek () {
-      return moment(this.date, 'DD/MM/YYYY').lang('ru').format('dddd')
+      return moment(this.date, 'DD/MM/YYYY').format('dddd')
     }
   },
 
