@@ -1,5 +1,5 @@
 <template lang="pug" >
-  .wrapper
+  div
     | {{ activePost }}
 </template>
 
@@ -9,6 +9,7 @@ import { db } from '~/db'
 const $posts = db.ref('posts')
 
 export default {
+  layout: 'admin',
 
   data () {
     return {

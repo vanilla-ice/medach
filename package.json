@@ -20,6 +20,7 @@
     "nuxt": "^1.0.0-rc8",
     "svg-inline-loader": "^0.8.0",
     "vue-style-loader": "^3.0.1",
+    "vue-sweetalert2": "^1.0.7",
     "vue-template-compiler": "^2.5.2",
     "vuex": "^2.4.0",
     "vuexfire": "^2.3.0"

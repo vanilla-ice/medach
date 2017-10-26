@@ -1,84 +1,30 @@
 <template lang="pug" >
-  .wrapper
-    .header
-      nuxt-link(to="/admin").logo
-        img(src="~/static/images/logo.png")
-
+  .inner
     .posts
-      .post
+      nuxt-link.post(to="admin/post/new")
         .add-new(v-html="require('~/static/images/plus.svg')")
 
       .post(v-for="(post, index) in posts")
         .opacity
           .buttons
             nuxt-link.button(:to="'admin/post/' + post.url") Редактировать
-            .button Удалить
+            .button(@click="removePost(post['.key'])") Удалить
         .img
         .name
           | {{ post.name }}
-    //- input(placeholder="Post name" v-model="activePost.name" @change="changeName")
-    //- input(placeholder="Url" v-model="activePost.url")
-    //- .tags
-    //-   .tag(v-for="(tag, id) in availableTags", :key="id")
-    //-     label(:for="'tag-' + id") {{ tag.name }}
-    //-     input(type="checkbox", :value="tag.value", :id="'tag-' + id" v-model="tags")
 
-    //- button(@click="savePost") save
 </template>
 
 <script>
-import Posters from '~/components/Posters'
-import Plus from '~/static/images/plus.svg'
-
-import slugify from '~/utils/slugify'
-
 import { mapGetters } from 'vuex'
 import { db } from '~/db'
 const $posts = db.ref('posts')
 
-const emptyPost = {
-  name: null,
-  sortDate: null,
-  date: null,
-  url: null,
-  tags: {}
-}
-
 export default {
+  layout: 'admin',
+
   data () {
     return {
-      activePost: emptyPost,
-      tags: [],
-      availableTags: [
-        {
-          value: 'surgery',
-          name: '#ХИРУРГИЯ'
-        },
-        {
-          name: '#ТЕРАПИЯ',
-          value: 'therapy'
-        },
-        {
-          name: '#ОФТАЛЬМОЛОГИЯ',
-          value: 'ophthalmology'
-        },
-        {
-          name: '#КАРДИОЛОГИЯ',
-          value: 'cardiology'
-        },
-        {
-          name: '#ОБРАЗОВАНИЕ',
-          value: 'education'
-        },
-        {
-          name: '#CRISPR',
-          value: 'crispr'
-        },
-        {
-          name: '#НЕЙРОХИРУРГИЯ',
-          value: 'neurosurgery'
-        }
-      ]
     }
   },
 
@@ -87,7 +33,7 @@ export default {
   },
 
   mounted () {
-    console.log(this.posts)
+    console.log(this)
   },
 
   computed: {
@@ -95,55 +41,37 @@ export default {
   },
 
   methods: {
-    savePost () {
-      const date = new Date()
-      this.activePost.sortDate = date.getTime()
-      this.activePost.date = `${date}`
-      this.tags.map(item => { this.activePost.tags[item] = true })
-      this.tags = []
-
-      $posts.push().set(this.activePost)
-    },
-
-    changeName (e) {
-      this.activePost.url = slugify(e.target.value)
+    removePost (id) {
+      return this.$swal({
+        title: 'Удалить пост?',
+        text: 'Это действие нельзя отменить',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Отмена',
+        confirmButtonText: 'Удалить!'
+      }).then(() => {
+        $posts.child(id).remove()
+        this.$swal(
+          'Успешно!',
+          'Пост успешно удален',
+          'success'
+        )
+      })
     }
-  },
-
-  components: {
-    Posters,
-    Plus
   }
 }
 </script>
 
 <style scoped lang="scss">
-.wrapper {
-  height: 100vh;
-  background: #eeefef;
-}
-
-.header {
-  padding: 30px 60px;
-}
-
-.logo {
-  display: inline-block;
-
-  img {
-    display: block;
-  }
-}
-
-.img {
-  width: 100%;
-  min-height: 200px;
-  background: url('~static/images/crisp.jpg') no-repeat center / cover;
-}
-
 .posts {
   display: flex;
   flex-flow: row wrap;
+  
+}
+
+.inner {
   padding: 10px 50px 50px 50px;
   height: calc(100% - 83px);
   overflow-y: auto;
@@ -157,6 +85,9 @@ export default {
   box-shadow: 1px 1px 3px 0 #ccc;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 330px;
 
   background: #fff;
 
@@ -236,6 +167,11 @@ export default {
   .add-new svg path {
     fill: #aaa;
   }
+}
+
+.img {
+  background: url('~static/images/crisp.jpg') no-repeat center / cover;
+  flex: 1 1 auto;
 }
 
 </style>

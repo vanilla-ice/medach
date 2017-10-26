@@ -42,6 +42,10 @@ module.exports = {
         loader: 'svg-inline-loader',
         exclude: /node_modules/
       })
-    }
-  }
+    },
+
+    vendor: ['vue-sweetalert2']
+  },
+
+  plugins: [{ src: '~/plugins/vue-sweetalert.js', ssr: false }]
 }
