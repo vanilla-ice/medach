@@ -33,6 +33,15 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+
+      const urlLoader = config.module.rules.find((rule) => rule.loader === 'url-loader')
+      urlLoader.test = /\.(png|jpe?g|gif)$/
+
+      config.module.rules.push({
+        test: /\.svg$/,
+        loader: 'svg-inline-loader',
+        exclude: /node_modules/
+      })
     }
   }
 }

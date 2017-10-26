@@ -1,20 +1,34 @@
 <template lang="pug" >
-  div
-    input(placeholder="Post name" v-model="activePost.name" @change="changeName")
-    input(placeholder="Url" v-model="activePost.url")
-    .tags
-      .tag(v-for="(tag, id) in availableTags", :key="id")
-        label(:for="'tag-' + id") {{ tag.name }}
-        input(type="checkbox", :value="tag.value", :id="'tag-' + id" v-model="tags")
+  .wrapper
+    .header
+      nuxt-link(to="/admin").logo
+        img(src="~/static/images/logo.png")
 
-    button(@click="savePost") save
+    .posts
+      .post
+        .add-new(v-html="require('~/static/images/plus.svg')")
+
+      .post(v-for="(post, index) in posts")
+        .opacity
+          .buttons
+            nuxt-link.button(:to="'admin/post/' + post.url") Редактировать
+            .button Удалить
+        .img
+        .name
+          | {{ post.name }}
+    //- input(placeholder="Post name" v-model="activePost.name" @change="changeName")
+    //- input(placeholder="Url" v-model="activePost.url")
+    //- .tags
+    //-   .tag(v-for="(tag, id) in availableTags", :key="id")
+    //-     label(:for="'tag-' + id") {{ tag.name }}
+    //-     input(type="checkbox", :value="tag.value", :id="'tag-' + id" v-model="tags")
+
+    //- button(@click="savePost") save
 </template>
 
 <script>
-import HeaderComponent from '~/components/Header.vue'
-import DataComponent from '~/components/Data.vue'
-import BigFotosComponent from '~/components/BigFotos.vue'
-import MinFotosComponent from '~/components/MinFotos.vue'
+import Posters from '~/components/Posters'
+import Plus from '~/static/images/plus.svg'
 
 import slugify from '~/utils/slugify'
 
@@ -69,10 +83,11 @@ export default {
   },
 
   fetch ({ store }) {
-    store.dispatch('setPostsRef', $posts)
+    store.dispatch('setPostsRef', $posts.orderByChild('sortDate'))
   },
 
   mounted () {
+    console.log(this.posts)
   },
 
   computed: {
@@ -96,14 +111,131 @@ export default {
   },
 
   components: {
-    HeaderComponent,
-    DataComponent,
-    BigFotosComponent,
-    MinFotosComponent
+    Posters,
+    Plus
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.wrapper {
+  height: 100vh;
+  background: #eeefef;
+}
+
+.header {
+  padding: 30px 60px;
+}
+
+.logo {
+  display: inline-block;
+
+  img {
+    display: block;
+  }
+}
+
+.img {
+  width: 100%;
+  min-height: 200px;
+  background: url('~static/images/crisp.jpg') no-repeat center / cover;
+}
+
+.posts {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px 50px 50px 50px;
+  height: calc(100% - 83px);
+  overflow-y: auto;
+}
+
+.post {
+  width: calc(20% - 20px);
+  cursor: pointer;
+  margin: 0 10px;
+  padding: 20px;
+  box-shadow: 1px 1px 3px 0 #ccc;
+  position: relative;
+  overflow: hidden;
+
+  background: #fff;
+
+  &:nth-child(n + 6) {
+    margin-top: 20px;
+  }
+}
+
+.name {
+  font-family: sans-serif;
+  margin-top: 15px;
+}
+
+.opacity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  opacity: 0;
+  transition: opacity .2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.button {
+  font-size: 18px;
+  font-family: sans-serif;
+  text-shadow: 1px 1px 1px #000;
+  border-bottom: 1px solid transparent;
+  display: inline-block;
+  color: #fff;
+
+  &:not(:first-child) {
+    margin-top: 10px;
+  }
+
+  &:hover {
+    border-color: #fff;
+  }
+}
+
+.add-new {
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+
+<style lang="scss">
+.add-new {
+  svg {
+    width: 100%;
+
+    path {
+      fill: #ccc;
+      transition: fill .2s ease;
+    }
+  }
+}
+
+.post:hover{
+  .add-new svg path {
+    fill: #aaa;
+  }
+}
 
 </style>
