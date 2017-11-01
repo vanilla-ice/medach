@@ -1,5 +1,5 @@
 <template lang="pug">
-  .wrapper
+  .main-wrapper
     .header
       nuxt-link(to="/admin").logo
         img(src="~/static/images/logo.png")
@@ -59,8 +59,8 @@ html {
   @import '../assets/fonts.css';
   @import '../assets/settings.css';
 
-.wrapper {
-  height: 100vh;
+.main-wrapper {
+  min-height: 100vh;
   background: #eeefef;
 }
 

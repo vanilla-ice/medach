@@ -22,6 +22,7 @@
     "vue-style-loader": "^3.0.1",
     "vue-sweetalert2": "^1.0.7",
     "vue-template-compiler": "^2.5.2",
+    "vue2-editor": "^2.0.26",
     "vuex": "^2.4.0",
     "vuexfire": "^2.3.0"
   },

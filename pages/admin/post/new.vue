@@ -1,26 +1,52 @@
 <template lang="pug" >
   .wrapper
-    input(placeholder="Post name" v-model="activePost.name" @change="changeName")
-    input(placeholder="Url" v-model="activePost.url")
-    .tags
-      .tag(v-for="(tag, id) in availableTags", :key="id")
-        label(:for="'tag-' + id") {{ tag.name }}
-        input(type="checkbox", :value="tag.value", :id="'tag-' + id" v-model="tags")
+    .inner
+      .left
+        .input-wrapper
+          .title
+            | Название поста
+          .input
+            input(v-model="activePost.name" @change="changeName")
+        
+        .input-wrapper
+          .title
+            | Url поста
+          .input
+            input(v-model="activePost.url")
+
+        .input-wrapper
+          .post-text
+            VueEditor(v-model="activePost.text")
+      
+      .right
+        .input-wrapper
+          .title
+            | Тэги
+          .tags
+            .tag(v-for="(tag, id) in availableTags", :key="id")
+              label(:for="'tag-' + id") {{ tag.name }}
+              input(type="checkbox", :value="tag.value", :id="'tag-' + id" v-model="tags")
 
     button(@click="savePost") save
 </template>
 
 <script>
 import slugify from '~/utils/slugify'
-import { db } from '~/db'
-const $posts = db.ref('posts')
+import { VueEditor } from 'vue2-editor'
+// import { db } from '~/db'
+// const $posts = db.ref('posts')
 
 const emptyPost = {
   name: null,
   sortDate: null,
   date: null,
   url: null,
-  tags: {}
+  tags: {},
+  text: null,
+  author: null,
+  redaction: null,
+  image: null,
+  infographic: null
 }
 
 export default {
@@ -75,7 +101,8 @@ export default {
       this.tags.map(item => { this.activePost.tags[item] = true })
       this.tags = []
 
-      $posts.push().set(this.activePost)
+      console.log(this.activePost)
+      //  $posts.push().set(this.activePost)
     },
 
     changeName (e) {
@@ -88,10 +115,39 @@ export default {
   },
 
   mounted () {
+  },
+
+  components: {
+    VueEditor
   }
 }
 </script>
 
 <style scoped lang="scss">
+.inner {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0 60px;
+}
 
+.input-wrapper {
+  margin-top: 15px;
+}
+
+.title {
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.input {
+  margin-top: 10px;
+}
+
+.post-text {
+  background: #fff;
+}
+
+.left {
+  flex: 1 1 auto;
+}
 </style>
